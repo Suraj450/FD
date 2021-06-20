@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer profile</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">    
+    <!-- Custom styles for this template -->
+     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+     
+</head>
+
+<body>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/cstm.jpeg') }}  ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Fraud Alert</h1>
+            <span class="subheading">Banking Regulation Monitoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="box">
+    <h2>Flagged Customers </h2>
+    <ul>
+      <li id="res"><span ></span></li> </a>
+      <script>
+          document.getElementById("res").innerHTML=localStorage.getItem("txtval")
+      </script>      
+    </ul>
+  </div>
+  
+    <div class="container">
+    
+        <div class="post-preview">
+            <h2 class="post-title">
+              Transactions flagged as fraud
+            </h2>
+            <h6 class="post-subtitle">
+              <table style="width:100%" class="styled-table">
+                <thead>
+                <tr>
+                  <th>step</th>
+                  <th>type</th>
+                  <th>amount</th>
+                  <th>nameOrig</th>
+                  <th>oldbalanceOrg</th>
+                  <th>newbalanceOrg</th>
+                  <th>nameDest</th>
+                  <th>oldbalanceDest</th>
+                  <th>newbalanceDest</th>
+                  <th>isFraud</th>
+                </tr>
+              </thead>
+                
+              <tbody>
+                {% for row in data %}
+                <tr>
+                  {% for cell in row %} 
+                  <td>{{ cell }}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}                  
+              </tbody>
+
+              </table>
+            </h6>
+          
+          
+        </div>          
+
+  <!-- Footer --> 
+  <footer>
+    <div class="container">        
+          <p class="copyright text-muted">Deutsche bank india regulations 2021</p>          
+    </div>
+  </footer> 
+
+</body>
+</html>
