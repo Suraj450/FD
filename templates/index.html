@@ -10,15 +10,35 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">    
     <!-- Custom styles for this template -->
-     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"> 
+     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
-     <script>
-       function fn(){
-           var f=document.getElementById("txt").value;
-           localStorage.setItem("txtval",f);
-           return false;
-       }
-     </script>
+     <style>
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+      }
+      
+      .active, .accordion:hover {
+        background-color: #ccc; 
+      }
+      
+      .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+      }
+      </style>
+     
+  
   </head>
 
   <body>
@@ -42,35 +62,34 @@
       <h2>Flagged Customers </h2>
       <ul>
         {% for row in cust %}
-        <a href="/customer"> <li><span></span>{{row}}</li> </a>
+        <a href="/customer/{{row}}"> <li><span></span>{{row}}</li> </a>
         {% endfor %} 
       </form>
       </ul>
     </div>
     
-      <div class="container">
-      
-          <div class="post-preview">
-              <h2 class="post-title">
-                Transactions flagged as fraud
-              </h2>
-              <h6 class="post-subtitle">
-                <table style="width:100%" class="styled-table">
-                  <thead>
-                  <tr>
-                    <th>step</th>
-                    <th>type</th>
-                    <th>amount</th>
-                    <th>nameOrig</th>
-                    <th>oldbalanceOrg</th>
-                    <th>newbalanceOrg</th>
-                    <th>nameDest</th>
-                    <th>oldbalanceDest</th>
-                    <th>newbalanceDest</th>
-                    <th>isFraud</th>
-                  </tr>
-                </thead>
-                  
+    
+    <div class="container">    
+        <div class="post-preview">
+            <div class="wrap-collabsible"> <input id="collapsible" class="toggle" type="checkbox"> <label for="collapsible" class="lbl-toggle">Transactions flagged as fraud</label>
+              <div class="collapsible-content"><div class="content-inner">
+            <h6 class="post-subtitle">
+              <table style="width:100%" class="styled-table">
+                <thead>
+                <tr>
+                  <th>step</th>
+                  <th>type</th>
+                  <th>amount</th>
+                  <th>nameOrig</th>
+                  <th>oldbalanceOrg</th>
+                  <th>newbalanceOrg</th>
+                  <th>nameDest</th>
+                  <th>oldbalanceDest</th>
+                  <th>newbalanceDest</th>
+                  <th>isFraud</th>
+                </tr>
+               </thead>
+                               
                 <tbody>
                   {% for row in data %}
                   <tr>
@@ -80,12 +99,22 @@
                   </tr>
                   {% endfor %}                  
                 </tbody>
+              </table>
+            </h6>  
+          </div>
+          </div>
+            </div>        
+      </div>                       
+    </div>  
 
-                </table>
-              </h6>
-            
-            
-          </div>          
+  </head>
+  <body>
+  
+
+  
+          
+    <!-- Custom scripts for this template -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
     <!-- Footer --> 
     <footer>
@@ -94,8 +123,8 @@
       </div>
     </footer> 
    
-  </body>
-
+  </body>    
+  
 </html>
 
 

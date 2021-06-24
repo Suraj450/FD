@@ -29,55 +29,51 @@
   </header>
 
   <!-- Main Content -->
-  <div class="box">
-    <h2>Flagged Customers </h2>
+  <div class="box" style="width: 30%;  float: left; margin-top: 100px; margin-left: 150px;">
+    <h2>Customer ID </h2>
     <ul>
-      <li id="res"><span ></span></li> </a>
-      <script>
-          document.getElementById("res").innerHTML=localStorage.getItem("txtval")
-      </script>      
+      <li><span></span>{{custID}}</li> </a>
     </ul>
   </div>
-  
-    <div class="container">
-    
-        <div class="post-preview">
-            <h2 class="post-title">
-              Transactions flagged as fraud
-            </h2>
-            <h6 class="post-subtitle">
-              <table style="width:100%" class="styled-table">
-                <thead>
-                <tr>
-                  <th>step</th>
-                  <th>type</th>
-                  <th>amount</th>
-                  <th>nameOrig</th>
-                  <th>oldbalanceOrg</th>
-                  <th>newbalanceOrg</th>
-                  <th>nameDest</th>
-                  <th>oldbalanceDest</th>
-                  <th>newbalanceDest</th>
-                  <th>isFraud</th>
-                </tr>
-              </thead>
-                
-              <tbody>
-                {% for row in data %}
-                <tr>
-                  {% for cell in row %} 
-                  <td>{{ cell }}</td>
-                  {% endfor %}
-                </tr>
-                {% endfor %}                  
-              </tbody>
+  <div style="">
+  <img src="https://previews.123rf.com/images/bluebay/bluebay1801/bluebay180100048/93400426-stock-market-graphs-digital-illustration.jpg" alt="alternatetext" width="400" height="300" style="margin-left: 55%; margin-top: -17%;">
+  </div>
 
-              </table>
-            </h6>
-          
-          
-        </div>          
-
+  <div class="container">
+      <div class="post-preview">
+          <h6 class="post-title">
+            Transactions of <span style="font-size:80%; font-weight: 650;">{{custID}}</span> 
+          </h6>
+          <h6 class="post-subtitle">
+            <table style="width:100%" class="styled-table">
+              <thead>
+              <tr>
+                <th>step</th>
+                <th>type</th>
+                <th>amount</th>
+                <th>nameOrig</th>
+                <th>oldbalanceOrg</th>
+                <th>newbalanceOrg</th>
+                <th>nameDest</th>
+                <th>oldbalanceDest</th>
+                <th>newbalanceDest</th>
+                <th>isFraud</th>
+              </tr>
+            </thead>
+              
+            <tbody>
+              {% for row in data %}
+              <tr>
+                {% for cell in row %} 
+                <td>{{ cell }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}                  
+            </tbody>
+            </table>
+          </h6>
+      </div>          
+  </div>
   <!-- Footer --> 
   <footer>
     <div class="container">        
